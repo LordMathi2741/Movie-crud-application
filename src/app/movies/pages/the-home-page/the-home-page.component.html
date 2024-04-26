@@ -1,3 +1,21 @@
+
+<form (submit)="onSubmit()" #movieForm='ngForm'>
+  <mat-form-field><input matInput placeholder="Id" name="id" required [(ngModel)]="movieData.id"></mat-form-field>
+  <mat-form-field><input type="text" matInput placeholder="Title" name="title" required [(ngModel)]="movieData.title"></mat-form-field>
+  <mat-form-field><input type="text" matInput placeholder="Genre" name="genre" required [(ngModel)]="movieData.genre"></mat-form-field>
+  <mat-form-field><input type="text" matInput placeholder="Duration" name="duration" required [(ngModel)]="movieData.duration"></mat-form-field>
+  <mat-form-field><input type="text" matInput placeholder="ImgUrl" name="imgUrl" required [(ngModel)]="movieData.imgUrl"></mat-form-field>
+
+  <!-- Botones para actualizar o cancelar la edición de un estudiante, con manejo condicional de la visualización -->
+  @if(isEditMode){
+    <button mat-button color="primary">Update</button>
+    <button mat-button color="warn" (click)="cancelEdit()">Cancel</button>
+  } @else {
+    <button mat-button color="primary">Add</button>
+  }
+</form>
+
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
@@ -31,6 +49,13 @@
   <ng-container matColumnDef="imgUrl">
     <th mat-header-cell *matHeaderCellDef> ImgUrl </th>
     <td mat-cell *matCellDef="let element"> {{element.getImgUrl()}} </td>
+  </ng-container>
+  <!-- Columna para acciones como editar y eliminar -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <a mat-raised-button color="accent" (click)="editItem(element)"><mat-icon>edit</mat-icon></a>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
