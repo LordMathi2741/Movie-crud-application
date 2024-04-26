@@ -1,0 +1,19 @@
+<div class="flex justify-center items-center flex-col gap-16 mt-16">
+  @for(movie of movies; track movie){
+    <mat-card>
+      <div>
+        <img [src]="movie.getImgUrl()" alt="movie poster" width="300" />
+      </div>
+      <mat-card-content>
+        <div class="flex flex-col">
+          <h3> {{movie.getTitle()}} </h3>
+          <h3> {{movie.getGenre()}}</h3>
+          <h3> {{movie.getDuration()}}</h3>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  }
+
+
+</div>
