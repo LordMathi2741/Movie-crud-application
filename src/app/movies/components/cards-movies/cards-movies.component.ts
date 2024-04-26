@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatCard, MatCardContent} from "@angular/material/card";
-import {MovieService} from "../service/movie-service.service";
-import {Movie} from "../model/movie.entity";
+import {MovieService} from "../../service/movie-service.service";
+import {Movie} from "../../model/movie.entity";
 
 @Component({
   selector: 'cards-movies',
